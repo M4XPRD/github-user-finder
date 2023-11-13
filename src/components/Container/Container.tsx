@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const Container = ({ children }: ContainerProps) => (
   <div className={styles.container}>
-    Container Component
+    {children}
   </div>
 );
 
