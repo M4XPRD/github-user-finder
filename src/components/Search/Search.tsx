@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import { ReactComponent as SearchIcon } from 'assets/icon-search.svg';
-import { ReactElement, useRef } from 'react';
 import Button from 'components/Button/Button';
 import styles from './Search.module.scss';
 
@@ -10,19 +9,17 @@ interface SearchProps {
   onSubmit: (text: string) => void;
 }
 
+type FormFields = {
+  username: HTMLInputElement,
+};
+
 const Search = ({ hasError, onSubmit }: SearchProps) => {
-  const searchRef = useRef<HTMLInputElement | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement & FormFields>) => {
     e.preventDefault();
-
-    const text = searchRef.current ? searchRef.current.value : '';
-
+    const text = e.currentTarget.username.value;
     if (text) {
       onSubmit(text);
-      if (searchRef.current) {
-        searchRef.current.value = '';
-      }
+      e.currentTarget.reset();
     }
   };
 
@@ -34,7 +31,6 @@ const Search = ({ hasError, onSubmit }: SearchProps) => {
         </label>
         <input
           className={styles.textField}
-          ref={searchRef}
           type="text"
           id="search"
           name="username"
