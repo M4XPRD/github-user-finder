@@ -8,10 +8,10 @@ This [task](https://www.frontendmentor.io/challenges/github-user-search-app-Q09Y
 
 ## Stack and tech
 
-  - TypeScript
-  - React
-  - SCSS
-  - GitHub API
+  - `TypeScript`
+  - `React`
+  - `SCSS`
+  - `GitHub API`
 
 ## Results
 
